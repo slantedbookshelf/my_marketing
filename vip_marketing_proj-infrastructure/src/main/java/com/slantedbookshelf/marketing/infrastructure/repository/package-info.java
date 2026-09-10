@@ -1,0 +1,1 @@
+package com.slantedbookshelf.marketing.infrastructure.repository;

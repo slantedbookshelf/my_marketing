@@ -1,0 +1,1 @@
+docker stop vip_marketing_proj
