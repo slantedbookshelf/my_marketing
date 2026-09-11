@@ -5,17 +5,19 @@ import com.slantedbookshelf.marketing.domain.strategy.service.armory.IStrategyDi
 import com.slantedbookshelf.marketing.domain.strategy.service.rule.chain.AbstractLogicChain;
 import com.slantedbookshelf.marketing.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.PropertySource;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 @Slf4j
 @Component("rule_weight")
-public class RuleWeightChain extends AbstractLogicChain {
+public class RuleWeightLogicChain extends AbstractLogicChain {
 
+    @Resource
     private IStrategyRepository repository;
 
+    @Resource
     private IStrategyDispatch strategyDispatch;
 
     public Long userScore = 0L;

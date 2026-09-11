@@ -6,6 +6,8 @@ import com.slantedbookshelf.marketing.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 /**
  * 黑名单方法
  */
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component("rule_blacklist")
 public class BlackListLogicChain extends AbstractLogicChain {
 
+    @Resource
     private IStrategyRepository repository;
 
     @Override
