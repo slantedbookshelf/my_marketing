@@ -25,6 +25,7 @@ public class DefaultTreeFactory {
         this.logicTreeNodeGroup = logicTreeNodeGroup;
     }
 
+    // 返回可执行的规则树引擎接口
     public IDecisionTreeEngine openLogicTree(RuleTreeVO ruleTreeVO){
         return new DecisionTreeEngine(logicTreeNodeGroup, ruleTreeVO);
     }

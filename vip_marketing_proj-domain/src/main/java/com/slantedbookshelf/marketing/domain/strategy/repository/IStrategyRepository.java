@@ -3,6 +3,7 @@ package com.slantedbookshelf.marketing.domain.strategy.repository;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyAwardEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyRuleEntity;
+import com.slantedbookshelf.marketing.domain.strategy.model.valobj.RuleTreeVO;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public interface IStrategyRepository {
      * @param treeId 规则树ID
      * @return 树结构信息
      */
-//    RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
+    RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
 
     /**
      * 缓存奖品库存
