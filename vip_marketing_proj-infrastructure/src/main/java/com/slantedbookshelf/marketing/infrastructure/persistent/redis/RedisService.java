@@ -47,6 +47,8 @@ public class RedisService implements IRedisService{
 
     @Override
     public Long getAtomicLong(String key) {
+
+        // RAtomicLong类型：单命令靠redis底层就是原子性操作，符合命令靠lua脚本
         return redissonClient.getAtomicLong(key).get();
     }
 

@@ -12,8 +12,25 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component("rule_lock")
 public class RuleLockLogicTreeNode implements ILogicTreeNode {
+
+    // mock一个用户抽奖次数
+    private Long userRaffleCount = 10L;
     @Override
-    public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId) {
+    public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue) {
+        long raffleCount = 0L;
+        try {
+            raffleCount = Long.parseLong(ruleValue);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("次数锁异常");
+        }
+
+        // 次数满足，放行
+        if(raffleCount <= userRaffleCount){
+            return DefaultTreeFactory.TreeActionEntity.builder()
+                    .ruleLogicCheckType(RuleLogicCheckTypeVO.ALLOW) // 拦截
+                    .build();
+        }
+
         return DefaultTreeFactory.TreeActionEntity.builder()
                 .ruleLogicCheckType(RuleLogicCheckTypeVO.TAKE_OVER) // 拦截
                 .build();

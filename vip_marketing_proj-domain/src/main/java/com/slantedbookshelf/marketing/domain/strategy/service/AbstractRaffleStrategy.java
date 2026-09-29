@@ -3,6 +3,7 @@ package com.slantedbookshelf.marketing.domain.strategy.service;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.RaffleAwardEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.RaffleFactorEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.RuleActionEntity;
+import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyAwardEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.slantedbookshelf.marketing.domain.strategy.repository.IStrategyRepository;
@@ -35,7 +36,7 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
 
     @Override
     public RaffleAwardEntity performRaffle(RaffleFactorEntity raffleFactorEntity) {
-// 1. 参数校验
+        // 1. 参数校验
         String userId = raffleFactorEntity.getUserId();
         Long strategyId = raffleFactorEntity.getStrategyId();
         if (null == strategyId || StringUtils.isBlank(userId)) {
@@ -46,21 +47,26 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
         DefaultChainFactory.StrategyAwardData chainStrategyAwardVO = raffleLogicChain(userId, strategyId);
         log.info("抽奖策略计算-责任链 {} {} {} {}", userId, strategyId, chainStrategyAwardVO.getAwardId(), chainStrategyAwardVO.getLogicModel());
         if (!DefaultChainFactory.LogicModel.RULE_DEFAULT.getCode().equals(chainStrategyAwardVO.getLogicModel())) {
-            return RaffleAwardEntity.builder()
-                    .awardId(chainStrategyAwardVO.getAwardId())
-                    .build();
+            // TODO awardConfig 暂时为空。黑名单指定积分奖品，后续需要在库表上配置对应的1积分值，并获取到。
+            return buildRaffleAwardEntity(strategyId, chainStrategyAwardVO.getAwardId(), null);
         }
 
-        // 3. 规则树抽奖过滤【奖品ID，会根据抽奖次数判断、库存判断、兜底兜里返回最终的可获得奖品信息】
+        // 3. 规则树抽奖过滤【奖品ID，会根据抽奖次数判断、库存判断、兜底返回最终的可获得奖品信息】
         DefaultTreeFactory.StrategyAwardData treeStrategyAwardVO = raffleLogicTree(userId, strategyId, chainStrategyAwardVO.getAwardId());
         log.info("抽奖策略计算-规则树 {} {} {} {}", userId, strategyId, treeStrategyAwardVO.getAwardId(), treeStrategyAwardVO.getAwardRuleValue());
 
         // 4. 返回抽奖结果
-        return RaffleAwardEntity.builder()
-                .awardId(treeStrategyAwardVO.getAwardId())
-                .awardConfig(treeStrategyAwardVO.getAwardRuleValue())
-                .build();
+        return buildRaffleAwardEntity(strategyId, treeStrategyAwardVO.getAwardId(), treeStrategyAwardVO.getAwardRuleValue());
 
+    }
+
+    private RaffleAwardEntity buildRaffleAwardEntity(Long strategyId, Integer awardId, String awardConfig){
+        StrategyAwardEntity strategyAward = repository.queryStrategyAwardEntity(strategyId, awardId);
+        return RaffleAwardEntity.builder()
+                .awardId(awardId)
+                .awardConfig(awardConfig)
+                .sort(strategyAward.getSort())
+                .build();
     }
 
     /**

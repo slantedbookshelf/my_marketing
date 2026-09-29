@@ -1,0 +1,9 @@
+package com.slantedbookshelf.marketing.infrastructure.persistent.dao;
+
+import com.slantedbookshelf.marketing.infrastructure.persistent.po.RaffleActivity;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface IRaffleActivityDao {
+    RaffleActivity queryRaffleActivityByActivityId(Long activityId);
+}

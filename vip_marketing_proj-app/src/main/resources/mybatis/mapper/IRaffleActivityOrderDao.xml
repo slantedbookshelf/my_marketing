@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slantedbookshelf.marketing.infrastructure.persistent.dao.IRaffleActivityOrderDao">
+
+    <insert id="insert">
+        INSERT INTO raffle_activity_order (
+            user_id,
+            sku,
+            activity_id,
+            activity_name,
+            strategy_id,
+            order_id,
+            order_time,
+            total_count,
+            day_count,
+            month_count,
+            state,
+            out_business_no
+        ) VALUES (
+            #{userId},
+            #{sku},
+            #{activityId},
+            #{activityName},
+            #{strategyId},
+            #{orderId},
+            #{orderTime},
+            #{totalCount},
+            #{dayCount},
+            #{monthCount},
+            #{state},
+            #{outBusinessNo}
+        )
+    </insert>
+    <select id="queryRaffleActivityOrderByUserId"
+            resultType="com.slantedbookshelf.marketing.infrastructure.persistent.po.RaffleActivityOrder">
+        SELECT user_id, activity_id, activity_name, strategy_id, order_id, order_time, state
+        FROM raffle_activity_order
+        WHERE user_id = #{userId}
+    </select>
+</mapper>

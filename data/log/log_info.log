@@ -1,17 +1,27 @@
-26-08-07.21:04:45.004 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on LAPTOP-DN65J67E with PID 12624 (D:\Files\WorkSpace\vip_marketing\vip_marketing_proj\vip_marketing_proj-app\target\classes started by SlantedBookshelf in D:\Files\WorkSpace\vip_marketing\vip_marketing_proj)
-26-08-07.21:04:45.005 [main            ] INFO  Application            - The following 1 profile is active: "dev"
-26-08-07.21:04:45.548 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-08-07.21:04:45.550 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-08-07.21:04:45.572 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
-26-08-07.21:04:46.112 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
-26-08-07.21:04:46.121 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
-26-08-07.21:04:46.122 [main            ] INFO  StandardService        - Starting service [Tomcat]
-26-08-07.21:04:46.122 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
-26-08-07.21:04:46.261 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
-26-08-07.21:04:46.261 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1228 ms
-26-08-07.21:04:46.640 [main            ] INFO  Version                - Redisson 3.26.0
-26-08-07.21:04:46.918 [redisson-netty-1-5] INFO  ConnectionsHolder      - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-26-08-07.21:04:46.936 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
-26-08-07.21:04:47.458 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-08-07.21:04:47.493 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
-26-08-07.21:04:47.504 [main            ] INFO  Application            - Started Application in 2.782 seconds (JVM running for 3.233)
+26-09-24.14:22:47.019 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on LAPTOP-DN65J67E with PID 45532 (D:\Files\WorkSpace\vip_marketing\vip_marketing_proj\vip_marketing_proj-app\target\classes started by SlantedBookshelf in D:\Files\WorkSpace\vip_marketing\vip_marketing_proj)
+26-09-24.14:22:47.020 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+26-09-24.14:22:48.715 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-09-24.14:22:48.717 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-09-24.14:22:48.748 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+26-09-24.14:22:49.528 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+26-09-24.14:22:49.536 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+26-09-24.14:22:49.536 [main            ] INFO  StandardService        - Starting service [Tomcat]
+26-09-24.14:22:49.536 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+26-09-24.14:22:49.661 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+26-09-24.14:22:49.661 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2604 ms
+26-09-24.14:22:50.161 [main            ] INFO  Version                - Redisson 3.26.0
+26-09-24.14:22:50.511 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+26-09-24.14:22:50.530 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 127.0.0.1/127.0.0.1:6379
+26-09-24.14:22:51.187 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-09-24.14:22:51.206 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+26-09-24.14:22:51.219 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+26-09-24.14:22:51.231 [main            ] INFO  Application            - Started Application in 4.636 seconds (JVM running for 8.476)
+26-09-24.14:22:55.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:00.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:05.009 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:10.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:15.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:20.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:25.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:30.024 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】
+26-09-24.14:23:35.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取，降低对数据库的更新频次，不要产生竞争】

@@ -9,13 +9,13 @@ public class RuleTree {
     /** 自增ID */
     private Long id;
     /** 规则树ID */
-    private String treeId;
+    private String treeId;  // tree_lock_1
     /** 规则树名称 */
-    private String treeName;
+    private String treeName;   // 规则树
     /** 规则树描述 */
     private String treeDesc;
     /** 规则根节点 */
-    private String treeRootRuleKey;
+    private String treeRootRuleKey;   // rule_lock
     /** 创建时间 */
     private Date createTime;
     /** 更新时间 */

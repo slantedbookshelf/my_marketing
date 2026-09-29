@@ -5,6 +5,7 @@ import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyEntit
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyRuleEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.RuleTreeVO;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
+import com.slantedbookshelf.marketing.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
 import java.util.List;
 import java.util.Map;
@@ -41,11 +42,13 @@ public interface IStrategyRepository {
     /**
      * 缓存奖品库存
      *
-     * @param cacheKey   key
+     * @param strategyId
      * @param awardCount 库存值
+     *
      */
-    void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
+    void cacheStrategyAwardCount(String strategyId, Integer awardId, Integer awardCount);
 
+    void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
     /**
      * 缓存key，decr 方式扣减库存
      *
@@ -53,6 +56,15 @@ public interface IStrategyRepository {
      * @return 扣减结果
      */
     Boolean subtractionAwardStock(String cacheKey);
+
+    void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO);
+
+    StrategyAwardStockKeyVO takeQueueValue();
+
+    void updateStrategyAwardStock(Long strageId, Integer awardId);
+
+    StrategyAwardEntity queryStrategyAwardEntity(Long strategyId, Integer awardId);
+
 
     /**
      * 写入奖品库存消费队列

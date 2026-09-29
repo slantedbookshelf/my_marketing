@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LogicStrategy {
-    DefaultLogicFactory.LogicModel logicMode();
+    DefaultLogicFactory.LogicModel logicMode();  // 表示使用这个注解时必须指定一个规则类型
 }

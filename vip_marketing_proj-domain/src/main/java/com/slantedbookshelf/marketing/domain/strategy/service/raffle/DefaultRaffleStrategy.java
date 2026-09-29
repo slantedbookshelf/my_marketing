@@ -3,11 +3,15 @@ package com.slantedbookshelf.marketing.domain.strategy.service.raffle;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.RaffleFactorEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.RuleActionEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.entity.RuleMatterEntity;
+import com.slantedbookshelf.marketing.domain.strategy.model.entity.StrategyAwardEntity;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.RuleTreeVO;
 import com.slantedbookshelf.marketing.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
+import com.slantedbookshelf.marketing.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import com.slantedbookshelf.marketing.domain.strategy.repository.IStrategyRepository;
 import com.slantedbookshelf.marketing.domain.strategy.service.AbstractRaffleStrategy;
+import com.slantedbookshelf.marketing.domain.strategy.service.IRaffleAward;
+import com.slantedbookshelf.marketing.domain.strategy.service.IRaffleStock;
 import com.slantedbookshelf.marketing.domain.strategy.service.armory.IStrategyDispatch;
 import com.slantedbookshelf.marketing.domain.strategy.service.rule.chain.ILogicChain;
 import com.slantedbookshelf.marketing.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
@@ -15,8 +19,10 @@ import com.slantedbookshelf.marketing.domain.strategy.service.rule.filter.factor
 import com.slantedbookshelf.marketing.domain.strategy.service.rule.filter.ILogicFilter;
 import com.slantedbookshelf.marketing.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import com.slantedbookshelf.marketing.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
+import com.slantedbookshelf.marketing.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,7 +33,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock {
 
     @Resource
     private DefaultLogicFactory logicFactory;
@@ -58,7 +64,19 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
     }
 
 
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException {
+        return repository.takeQueueValue();
+    }
 
+    @Override
+    public void updateStrategyAwardStock(Long strageId, Integer awardId) {
+        repository.updateStrategyAwardStock(strageId, awardId);
+    }
 
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
+        return repository.queryStrategyAwardList(strategyId);
+    }
 
 }
